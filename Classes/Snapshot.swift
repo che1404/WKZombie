@@ -64,7 +64,7 @@ public class Snapshot {
         
         try data.writeToURL(fileURL!, options: .AtomicWrite)
         
-        return fileURL
+        return fileURL!
     }
     
     /**
