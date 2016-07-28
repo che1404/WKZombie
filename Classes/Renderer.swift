@@ -206,11 +206,13 @@ extension Renderer {
 
         #if swift(>=2.3)
         if let data = UIImagePNGRepresentation(snapshot!) {
-        #else
-        if let data = UIImagePNGRepresentation(snapshot) {
-        #endif
             return Snapshot(data: data, page: webView.URL)
         }
+        #else
+        if let data = UIImagePNGRepresentation(snapshot) {
+            return Snapshot(data: data, page: webView.URL)
+        }
+        #endif
         return nil
     }
 }
