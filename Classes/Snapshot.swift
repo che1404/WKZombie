@@ -62,7 +62,7 @@ public class Snapshot {
         let fileName = String(format: "wkzombie-snapshot-%@", identifier)
         let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(fileName)
         
-        try data.writeToURL(fileURL, options: .AtomicWrite)
+        try data.writeToURL(fileURL!, options: .AtomicWrite)
         
         return fileURL
     }
@@ -80,7 +80,7 @@ public class Snapshot {
         let fileManager = NSFileManager.defaultManager()
         if let fileName = file.lastPathComponent {
             let destination = directory.URLByAppendingPathComponent(fileName)
-            try fileManager.moveItemAtURL(file, toURL: destination)
+            try fileManager.moveItemAtURL(file, toURL: destination!)
             return destination
         }
         return nil
