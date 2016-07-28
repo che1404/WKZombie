@@ -204,7 +204,11 @@ extension Renderer {
         let snapshot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
+        #if swift(>=2.3)
         if let data = UIImagePNGRepresentation(snapshot!) {
+        #else
+        if let data = UIImagePNGRepresentation(snapshot) {
+        #endif
             return Snapshot(data: data, page: webView.URL)
         }
         return nil
